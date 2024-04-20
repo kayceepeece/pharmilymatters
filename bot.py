@@ -37,8 +37,14 @@ async def main() -> None:
     await asyncio.gather(
         application.stop(),  # Stop the Telegram bot application
         loop.shutdown_asyncgens(),  # Shutdown any async generators
-        loop.stop()
     )
+
+    # Ensure the event loop is stopped before it's closed
+    if not loop.is_closed():
+        loop.stop()
+        while loop.is_running():
+            await asyncio.sleep(0.1)
+    loop.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
