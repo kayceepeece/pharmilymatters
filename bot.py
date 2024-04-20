@@ -24,7 +24,7 @@ async def main() -> None:
     token = os.environ.get('TELEGRAM_TOKEN')
     print(os.environ.get('TELEGRAM_TOKEN'))
     # Create the Application and pass it your bot's token.
-    application = Application.builder().token(TOKEN).build()
+    application = Application.builder().token(token).build()
 
     # Register the /start command handler
     application.add_handler(CommandHandler("start", start_command))
