@@ -19,7 +19,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def main() -> None:
     """Start the bot."""
     from asyncio import get_event_loop  # Import get_event_loop
-
+token = os.environ.get('TELEGRAM_TOKEN')
     # Create the Application and pass it your bot's token.
     application = Application.builder().token(TOKEN).build()
 
