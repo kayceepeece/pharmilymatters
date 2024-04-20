@@ -11,7 +11,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-TOKEN = 'TELEGRAM_TOKEN'
+
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Send a message when the command /start is issued."""
@@ -22,6 +22,7 @@ async def main() -> None:
     """Start the bot."""
     from asyncio import get_event_loop  # Import get_event_loop
     token = os.environ.get('TELEGRAM_TOKEN')
+    print(os.environ.get('TELEGRAM_TOKEN'))
     # Create the Application and pass it your bot's token.
     application = Application.builder().token(TOKEN).build()
 
@@ -36,6 +37,7 @@ async def main() -> None:
     await asyncio.gather(
         application.stop(),  # Stop the Telegram bot application
         loop.shutdown_asyncgens(),  # Shutdown any async generators
+        loop.stop()
     )
 
 if __name__ == '__main__':
