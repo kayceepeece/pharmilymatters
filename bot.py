@@ -1,4 +1,3 @@
-pip install python-telegram-bot nest_asyncio
 import nest_asyncio
 nest_asyncio.apply()
 from telegram import Update
